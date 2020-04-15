@@ -2,11 +2,11 @@
   "s3": {
     "stage": {
       "bucket": "projects-staging.seattletimes.com",
-      "path": ""
+      "path": "truthful-tree"
     },
     "live": {
       "bucket": "projects.seattletimes.com",
-      "path": ""
+      "path": "2020/business/federally-backed-mortgage-lookup"
     }
   },
   "title": "",
@@ -15,7 +15,7 @@
   "url": "",
   "post_id": 0,
   "image": "assets/social.jpg",
-  "sheets": [],
+  "sheets": ["1YtNgkRTb1tMJHASC42kTke6ecRn2PN0KHx3NRWlp65M"],
   "docs": [],
   "embedded": true,
   "production": false
