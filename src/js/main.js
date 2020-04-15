@@ -10,13 +10,22 @@ var data = require("../../data/buildings.sheet.json"),
 	L = map_el.leaflet,
 	map = map_el.map;
 
+data.forEach(function(d) {
+	var icon = L.divIcon({className: 'map-dot'});
+	var marker = L.marker([d.latitude, d.longitude], {
+		icon: icon
+	}).addTo(map);
+
+	marker._icon.dataset.building = d.building_name;
+});
+
 var search = function() {
-  var input, filter, table, tr, td, i, txtValue;
+  var input, filter, table, tr, td, dot, i, txtValue;
   input = document.getElementById("search-bar");
   filter = input.value.toUpperCase(),
   table = document.getElementById("table"),
-  tr = table.getElementsByTagName("tr");
-  // dots = map_el.getElements;
+  tr = table.getElementsByTagName("tr"),
+  map_dots = document.getElementsByClassName("map-dot");
 
   // Loop through all table rows; hide those that don't match the search query
   for (i = 0; i < tr.length; i++) {
@@ -29,22 +38,15 @@ var search = function() {
         tr[i].style.display = "none";
       }
     }
+
+    dot = map_dots[i];
+    dot_text = dot.dataset.building
+    if (dot_text.toUpperCase().indexOf(filter) > -1) {
+    	dot.style.display = ""
+    } else {
+    	dot.style.display = "none";
+    }
   }
-
-  // Look through all dots; hide those that don't match search query
-
 }
-
-data.forEach(function(d) {
-	if (d.latitutde != 0 && d.purchase_amount != 0) {
-		var circle = L.circle([d.latitude, d.longitude], {
-				fillColor: "#333333",
-				fillOpacity: 0.6,
-				radius: 300,
-				stroke: false
-			})
-			.addTo(map);
-	}
-});
 
 search_el.addEventListener("keyup", search);
