@@ -14,37 +14,34 @@
     <% } %>
     <responsive-child>
       <main class="interactive">
-        <h1 class="graphic-hed">Multifamily buildings with federally backed loans</h1>
-        <p class="graphic-chatter">Residential building owners who hold federally  backed loans are not allowed to evict tenants until July 25. Look up your building to see whether it falls under this rule. Fannie Mae, Freddie Mac and FHA-insured mortgages are in this dataset; VA and USDA loans are not.</p>
-        <input id="search-bar" class="search-bar">
+        <h1 class="graphic-hed">Is your apartment building covered by the federal eviction moratorium?</h1>
+        <p class="graphic-chatter">Apartment building owners who hold federally backed loans or receive government subsidies are not allowed to evict tenants until July 25, though some believe the rule actually extends until August 23. Look up your building to see whether it falls under this rule.</p>
+        <input id="search-bar" class="search-bar" placeholder="Search for a building or address">
         <div class="flexbox">
           <div class="map-container">
             <div class="aspect-ratio-outer">
               <div class="aspect-ratio-inner">
-                <leaflet-map zoom=9>
+                <leaflet-map zoom=7>
                   <tile-layer layer="cartoPositron"></tile-layer>
                 </leaflet-map>
               </div>
             </div>
           </div>
           <div class="table-container">
-            <table id="table" class="table">
-              <thead>
-                <th class="building">Building</th>
-                <th class="address">Address</th>
-                <th class="financing">Financing</th>
-              </thead>
-              <tbody>
-                <% json.buildings.forEach(function(b) { %>
-                  <tr>
-                    <td class="building"><%= b.building_name %></td>
-                    <td class="address"><%= b.Address %></td>
-                    <td class="financing"><%= b.financing %></td>
-                  </tr>
-                <% }) %>
-              </tbody>
-            </table>
+            <div id="table" class="table">
+              <% json.buildings.forEach(function(b) { %>
+                <div class="building">
+                  <p><strong><%= b.building_name %></strong></p>
+                  <p><%= b.address %></p>
+                  <p><%= b.financing %></p>
+                </div>
+              <% }) %>
+            </div>
           </div>
+        </div>
+        <div class="caption-container">
+          <p class="data-source">Source: <a href="https://mfdusdisclose.fanniemae.com/#/home">Fannie Mae</a>, <a href="https://fm-msia.com/">Freddie Mac</a>, <a href="https://www.hud.gov/program_offices/housing/comp/rpts/mfh/mf_f47">U.S. Department of Housing and Urban Development</a></p>
+          <p class="art-credit">Hilary Fung / The Seattle Times</p>
         </div>
       </main>
     </responsive-child>

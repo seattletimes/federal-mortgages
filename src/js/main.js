@@ -20,22 +20,22 @@ data.forEach(function(d) {
 });
 
 var search = function() {
-  var input, filter, table, tr, td, dot, i, txtValue;
+  var input, filter, table, row, dot, i, txtValue;
   input = document.getElementById("search-bar");
   filter = input.value.toUpperCase(),
   table = document.getElementById("table"),
-  tr = table.getElementsByTagName("tr"),
+  rows = table.getElementsByClassName("building"),
   map_dots = document.getElementsByClassName("map-dot");
 
   // Loop through all table rows; hide those that don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
+  for (i = 0; i < rows.length; i++) {
+    row = rows[i];
+    if (row) {
+      txtValue = row.textContent || row.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
+        rows[i].style.display = "";
       } else {
-        tr[i].style.display = "none";
+        rows[i].style.display = "none";
       }
     }
 
