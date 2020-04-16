@@ -6,7 +6,7 @@
     },
     "live": {
       "bucket": "projects.seattletimes.com",
-      "path": "2020/business/federally-backed-mortgage-lookup"
+      "path": "2020/business/federal-eviction-moratorium-lookup"
     }
   },
   "title": "",
@@ -18,5 +18,5 @@
   "sheets": ["1YtNgkRTb1tMJHASC42kTke6ecRn2PN0KHx3NRWlp65M"],
   "docs": [],
   "embedded": true,
-  "production": false
+  "production": true
 }

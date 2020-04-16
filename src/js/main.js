@@ -10,12 +10,24 @@ var data = require("../../data/buildings.sheet.json"),
 	L = map_el.leaflet,
 	map = map_el.map;
 
+var financing_classes = {
+	"Financed with an FHA-insured loan": "fha",
+	"Financed with a Fannie Mae-guaranteed loan": "fannie",
+	"Financed with a Freddie Mac-guaranteed loan": "freddie",
+	"Federally subsidized": "subsidized"
+};
+
 data.forEach(function(d) {
 	var icon = L.divIcon({className: 'map-dot'});
 	var marker = L.marker([d.latitude, d.longitude], {
 		icon: icon
 	}).addTo(map);
 
+	// var popup_content = "<p><strong>" + d.building_name + "</strong></p>" + 
+	// 	"<p>" + d.address + "</p>";
+	// marker.bindPopup(popup_content).openPopup();
+
+	// marker._icon.classList.add(financing_classes[d.financing]);
 	marker._icon.dataset.building = d.building_name;
 	marker._icon.dataset.address = d.address;
 });
@@ -41,7 +53,7 @@ var search = function() {
     }
 
     dot = map_dots[i];
-    dot_text = dot.dataset.building + " " + dot.dataset.address
+    dot_text = dot.dataset.building + " " + dot.dataset.address;
     if (dot_text.toUpperCase().indexOf(filter) > -1) {
     	dot.style.display = ""
     } else {

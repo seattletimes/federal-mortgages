@@ -102,12 +102,28 @@ main.interactive {
 	width: 30%;
 }
 
+.leaflet-interactive.map-dot {
+  cursor: auto;
+}
+
 .map-dot {
-	background-color: #333333;
+  background-color: #333333;
 	border-radius: 6px;
 	opacity: 0.6;
 	width: 6px!important;
 	height: 6px!important;
+  // &.fannie {
+  //   background-color: #2b83ba;
+  // }
+  // &.freddie {
+  //   background-color: #d95f02;
+  // }
+  // &.fha {
+  //   background-color: #7570b3;
+  // }
+  // &.subsidized {
+  //   background-color: #333333;
+  // }
 }
 
 .caption-container {
@@ -123,3 +139,10 @@ main.interactive {
 }
 
 @import "leaflet-tweaks";
+
+div.leaflet-popup-content {
+  margin: 0;
+  p {
+    margin: 0;
+  }
+}
