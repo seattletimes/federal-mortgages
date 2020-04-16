@@ -17,6 +17,7 @@ data.forEach(function(d) {
 	}).addTo(map);
 
 	marker._icon.dataset.building = d.building_name;
+	marker._icon.dataset.address = d.address;
 });
 
 var search = function() {
@@ -40,7 +41,7 @@ var search = function() {
     }
 
     dot = map_dots[i];
-    dot_text = dot.dataset.building
+    dot_text = dot.dataset.building + " " + dot.dataset.address
     if (dot_text.toUpperCase().indexOf(filter) > -1) {
     	dot.style.display = ""
     } else {
